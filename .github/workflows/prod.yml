@@ -25,10 +25,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{matrix.node}}
-      # - name: current directory backend & Install dependencies
-      #   run : cd ./backend  && npm install --force
-      #- name: Format code
-      #   run: npm run format 
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
