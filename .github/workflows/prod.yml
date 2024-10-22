@@ -46,7 +46,6 @@ jobs:
 
       - name: Push Docker image frontend
         run: docker push ${{secrets.DOCKER_USERNAME}}/pbi:frontend
-
       #- name: Deploy to Production Server
       #   uses: appleboy/ssh-action@master
       #   with:
