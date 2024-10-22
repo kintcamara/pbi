@@ -1,0 +1,17 @@
+
+.btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.dataset{
+    height: 500px;
+    width: 90%;
+    margin: auto;
+    overflow-x:scroll;
+}
+.display{
+    display: none;
+}

@@ -1,0 +1,12 @@
+<!-- <button (click)="login()">Connexion</button> -->
+<!-- <iframe title="US Sales Analysis" style="width: 95%; height:100vh; margin: auto;" src="https://app.powerbi.com/reportEmbed?reportId=8655950c-beb7-484c-957a-6879c6004e96&autoAuth=true&ctid=4d24a5e1-43ac-47f2-8666-7018b13dec8a" frameborder="0" allowFullScreen="true"></iframe> -->
+<!-- <iframe title="article" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=6dc68358-98e0-441e-bff3-195305987d3e&autoAuth=true&ctid=4d24a5e1-43ac-47f2-8666-7018b13dec8a" frameborder="0" allowFullScreen="true"></iframe> -->
+
+<div class="btn-div">
+  <button (click)="onSwitch=!onSwitch">DataSets</button>
+</div>
+<div [ngClass]="{display:!onSwitch}"  class="dataset">
+  {{dataSetsData|json}}
+</div>
+ <div [ngClass]="{display:onSwitch}" id="reportContainer" style="width: 95%; height:70vh;margin: auto;"></div>
+ 
