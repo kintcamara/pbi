@@ -35,18 +35,22 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }} 
           password: ${{ secrets.DOCKER_PASSWORD }}
+        
+      - name: current directory backend & Install dependencies
+        run : |
+          cd ./backend && npm install --force
       - name: Build Docker image backend
-        run: |
-          cd ./backend
-          docker build . -t ${{secrets.DOCKER_USERNAME}}/pbi:backend
+        run: docker build ./backend/ -t ${{secrets.DOCKER_USERNAME}}/pbi:backend
 
       - name: Push Docker image backend
         run: docker push ${{secrets.DOCKER_USERNAME}}/pbi:backend
   
+      - name: current directory frontend & Install dependencies
+        run : |
+          cd ./frontend && npm install --force
+          
       - name: Build Docker image frontend
-        run: |
-           cd ./frontend 
-           docker build . -t ${{secrets.DOCKER_USERNAME}}/pbi:frontend
+        run: docker build ./frontend -t ${{secrets.DOCKER_USERNAME}}/pbi:frontend
 
       - name: Push Docker image frontend
         run: docker push ${{secrets.DOCKER_USERNAME}}/pbi:frontend
