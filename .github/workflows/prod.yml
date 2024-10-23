@@ -22,14 +22,20 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [18, 20, 21]
+    outputs:
+      output1: steps.backend.outputs.versionFrontend
+      output2: steps.backend.outputs.versionBackend
     steps:
       - name: Echo System Info
+        id: backend
         run: |
           echo "-------------Systeme d'exploitation--------"
           echo "${{ matrix.os }}"
           echo "----------------Version---------------------"
           echo "${{ env.version }}"
-          
+          echo "::set-output name=versionBackend::backend-${{env.version}}"
+          echo "::set-output name=versionFrontend::frontend-${{env.version}}"
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -46,7 +52,7 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/pbi:${{ github.event_name == 'push' && github.ref == 'refs/heads/frontend' && 'frontend' || 'backend' }}"
+          IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/pbi:${{github.event_name == 'pull_request' || github.event_name == 'push' && github.ref == 'refs/heads/frontend' && 'frontend' || 'backend' }}"
           docker build ./${{ github.event_name == 'push' && github.ref == 'refs/heads/frontend' && 'frontend' || 'backend' }} -t $IMAGE_NAME
           docker push $IMAGE_NAME
   deploy:
@@ -55,8 +61,10 @@ jobs:
     steps:
       - name: Deploy to Production Server
         run: |
-          echo "-------------Deploy to Production Server----------"
+          echo "-------------Deploy to Production Server-----------"
           echo "Deployed on the production server"
+          echo "Frontend version: ${{needs.build.outputs.output1}}"
+          echo "Backend version: ${{needs.build.outputs.output2}}"
           
         # Uncomment the following block to use SSH for deployment
         # - name: Deploy to Production Server
