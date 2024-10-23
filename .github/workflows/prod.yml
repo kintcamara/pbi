@@ -63,8 +63,8 @@ jobs:
         run: |
           echo "-------------Deploy to Production Server-----------"
           echo "Deployed on the production server"
-          echo "Frontend version: ${{needs.build.outputs.output1}}"
-          echo "Backend version: ${{needs.build.outputs.output2}}"
+          echo 'Frontend version: ${{needs.build.outputs.output1}}'
+          echo 'Backend version: ${{needs.build.outputs.output2}}'
           
         # Uncomment the following block to use SSH for deployment
         # - name: Deploy to Production Server
