@@ -5,13 +5,11 @@ on:
     branches:
       - frontend
       - backend
-      - prod
     paths-ignore: ["**.md"]
   pull_request:
     branches:
       - frontend
       - backend
-      - prod
     paths-ignore: ["**.md"]
 
 env:
