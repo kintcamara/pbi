@@ -10,6 +10,9 @@ on:
       - frontend
       - backend
     paths-ignore: ["**.md"]
+env:
+   version: v1
+
 jobs:
   build:
     runs-on: ${{matrix.os}}
@@ -18,6 +21,13 @@ jobs:
         os: [ubuntu-latest]
         node: [20]
     steps:
+      - name: echo
+        run: |
+           echo "-------------Systeme d'exploitation--------"
+           echo "${{matrix.os}}"
+           echo "----------------Version---------------------"
+           echo ${{env.version}}
+
       - name: Checkout code
         uses: actions/checkout@v2
 
