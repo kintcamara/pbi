@@ -23,8 +23,8 @@ jobs:
         os: [ubuntu-latest]
         node: [18, 20, 21]
     outputs:
-      output1: steps.backend.outputs.versionFrontend
-      output2: steps.backend.outputs.versionBackend
+      output1: ${{steps.backend.outputs.versionFrontend}}
+      output2: ${{steps.backend.outputs.versionBackend}}
     steps:
       - name: Echo System Info
         id: backend
@@ -63,8 +63,8 @@ jobs:
         run: |
           echo "-------------Deploy to Production Server-----------"
           echo "Deployed on the production server"
-          echo ${{needs.build.outputs.output1}}
-          echo ${{needs.build.outputs.output2}}
+          echo 'Frontend version: ${{needs.build.outputs.output1}}'
+          echo 'Backend version: ${{needs.build.outputs.output2}}'
           
         # Uncomment the following block to use SSH for deployment
         # - name: Deploy to Production Server
