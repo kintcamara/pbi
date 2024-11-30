@@ -1,6 +1,6 @@
 services:
   backend:
-    build: ./backend
+    # build: ./backend
     restart: unless-stopped
     image: workhard2021/pbi:pbi-node
     env_file:
@@ -10,7 +10,7 @@ services:
     networks:
       - pbi-network
   frontend:
-    build: ./frontend
+    # build: ./frontend
     restart: unless-stopped
     image: workhard2021/pbi:pbi-ang
     networks:

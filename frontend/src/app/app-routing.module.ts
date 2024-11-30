@@ -6,6 +6,7 @@ import { PowerBiReport2Component } from './components/power-bi-report-2/power-bi
 const routes: Routes = [
   { path: 'report', component: PowerBiReportComponent },
   { path: 'report-2', component: PowerBiReport2Component},
+  {path:'**',redirectTo:"report",pathMatch:"full"}
 ];
 
 @NgModule({

@@ -47,7 +47,6 @@ class PowerbiService{
                 },
                 body:JSON.stringify(body),
             });
-            console.log(response,"sresponse")
             if (!response.ok) {
                throw new Error(`Erreur lors de la récuperation`);
             }

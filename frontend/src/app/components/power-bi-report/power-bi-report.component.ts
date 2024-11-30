@@ -62,6 +62,5 @@ export class PowerBiReportComponent {
       pbi.factories.routerFactory
     );
     const report=powerbi.embed(reportContainer,embedConfig);
-    report.off("rendered");
-  }
+    report.off("rendered");}
 }
